@@ -37,3 +37,18 @@ Personne.findById(
       .catch(err => {
         console.error(err)
       })
+
+
+      // LES AIDES de la derniere questions
+
+Personne.find({ favoriteFoods: "burritos" }) // Recherche par aliment préféré
+.sort({ name: 1 }) // Trier par nom dans l'ordre croissant
+.limit(2) // Limiter les résultats à deux documents
+.select({ age: 0 }) // Masquer le champ 'age'
+.exec() // Exécuter la requête et retourner une promesse
+.then(personnes => {
+  console.log("Personnes qui aiment les burritos :", personnes);
+})
+.catch(err => {
+  console.error("Erreur lors de la recherche des personnes :", err);
+});
